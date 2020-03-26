@@ -1,0 +1,51 @@
+<AppLayout>:
+    orientation: 'vertical'
+    StencilView:
+        id: stencil
+        ScatterLayout:
+            id: scatter
+            center: self.parent.center
+            size_hint: (None,None)
+            size: active_image.size
+            do_rotation: False
+            Image:
+                id: active_image
+                source: root.get_image_path()
+                size: self.texture.size
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: None
+        Label:
+            text: 'Zoom'
+            size_hint_x: 0.2
+        Slider:
+            id: slider
+            min: 1
+            max: 10
+            step: 0.05
+            value_track: True
+            on_value: root.change_scale(*args)
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: None
+        Button:
+            id: start_button
+            bold: True
+            text: 'START'
+            background_color: (0.2,1,0.8,0.4)
+            background_normal: ''
+            on_press: root.start_clicked()
+        Button:
+            id: stop_button
+            bold: True
+            text: 'STOP'
+            background_color: (1,0.4,0.4,0.4)
+            background_normal: ''
+            on_press: root.stop_clicked()
+            disabled: True
+        Button:
+            id: settings_button
+            bold: True
+            text: 'SETTINGS'
+            on_release: app.open_settings()
+            disabled: False
