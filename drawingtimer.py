@@ -216,6 +216,8 @@ class DrawingTimer(App):
         self.set_path_list()
         self.icon = 'logo.jpg'
         self.title = 'Drawing Timer v0.1'
+        Window.minimum_width = 640
+        Window.minimum_height = 640
         return AppLayout()
 
     def set_path_list(self):
